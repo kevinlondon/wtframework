@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ##########################################################################
-#This file is part of WTFramework. 
+# This file is part of WTFramework. 
 #
 #    WTFramework is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -73,10 +73,10 @@ if __name__ == '__main__':
         project_dir = os.getcwd() + "/" + args[0]
         ensure_dir(project_dir)
 
-    #create folder root file
+    # create folder root file
     create_file(os.path.join(project_dir, ".wtf_root_folder"), _root_folder_placeholder_.contents)
     
-    #create runtest script.
+    # create runtest script.
     runtests_path = os.path.join(project_dir, "runtests.py")
     create_file(runtests_path, _runtests_py_.contents)
     # make file executable
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     for subdirectory in project_subdirectories:
         ensure_dir(os.path.join(project_dir, subdirectory))
     
-    #create default config file
+    # create default config file
     create_file(os.path.join(project_dir,"configs", "default.yaml"), _default_yaml_.contents)
     
     tests_dir = os.path.join(project_dir, "tests")
