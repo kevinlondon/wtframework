@@ -34,6 +34,7 @@ def ensure_dir(dir_path):
     else: 
         print("{0} already exists".format(dir_path))
 
+
 def create_file(filepath, contents, overwrite=False):
     if not os.path.exists(filepath) or overwrite:
         print("Creating {0}".format(filepath))
@@ -42,6 +43,7 @@ def create_file(filepath, contents, overwrite=False):
         text_file.close()
     else:
         print("{0} already exists.".format(filepath))
+
 
 def create_tests_folders(tests_path):
     """Create each subdirectory and initialize the its __init__.py file."""
@@ -136,6 +138,3 @@ wtframework=={version}
 
         for key in _examples_.examples.keys():
             create_file( os.path.join(project_dir,key), _examples_.examples[key], overwrite=True)
-
-
-
