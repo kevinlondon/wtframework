@@ -43,6 +43,31 @@ def create_file(filepath, contents, overwrite=False):
     else:
         print("{0} already exists.".format(filepath))
 
+def create_tests_folders(tests_path):
+    """Create each subdirectory and initialize the its __init__.py file."""
+    tests_subdirectories = [
+        ("flows", "'Put reusable multi-page flows here.'"),
+        ("models", "'Put models like database abstractions here.'"),
+        ("pages", "'Put your PageObjects here.'"),
+        ("support", "'Put various utility functions you want to reuse here.'"),
+        ("testdata", "'Put reuseable functions for generating and handling test data here.'"),
+        ("tests", "'Put your high level tests here.'"),
+    ]
+
+    # Create the root level init file.
+    base_init_path = os.path.join(tests_path, "__init__.py")
+    base_init_content = "'Top level tests folder.  Organize your items in the subfolders below.'"
+    create_file(base_init_path, base_init_content)
+
+    # Iterate through each tuple and initialize contents.
+    for subdirectory_name, init_contents in tests_subdirectories:
+        subdirectory_path = os.path.join(tests_path, subdirectory_name)
+        ensure_dir(subdirectory_path)
+
+        init_path = os.path.join(subdirectory_path, "__init__.py")
+        create_file(init_path, init_contents)
+
+
 ################# MAIN SETUP SCRIPT ######################
 if __name__ == '__main__':
 
@@ -83,7 +108,10 @@ if __name__ == '__main__':
     os.chmod(runtests_path, 0755)
 
     # Create project folders as needed
-    project_subdirectories = ["assets", "data", "configs", "reference-screenshots", "reports", "screenshots", "tests"]
+    project_subdirectories = [
+        "assets", "data", "configs", "reference-screenshots", 
+        "reports", "screenshots", "tests"
+    ]
     for subdirectory in project_subdirectories:
         ensure_dir(os.path.join(project_dir, subdirectory))
     
@@ -91,19 +119,7 @@ if __name__ == '__main__':
     create_file(os.path.join(project_dir,"configs", "default.yaml"), _default_yaml_.contents)
     
     tests_dir = os.path.join(project_dir, "tests")
-
-    # Create test folders as needed
-    tests_subdirectories = ["flows", "models", "pages", "support", "testdata", "tests"]
-    for subdirectory in tests_subdirectories:
-        ensure_dir(os.path.join(tests_dir, subdirectory))
-
-    create_file(os.path.join(tests_dir, "__init__.py"), "'Top level tests folder.  Organize your items in the subfolders below.'")
-    create_file(os.path.join(tests_dir, "flows", "__init__.py"), "'Put reusable multi-page flows here.'")
-    create_file(os.path.join(tests_dir, "models", "__init__.py"), "'Put models like database abstractions here.'")
-    create_file(os.path.join(tests_dir, "pages", "__init__.py"), "'Put your PageObjects here.'")
-    create_file(os.path.join(tests_dir, "support", "__init__.py"), "'Put various utility functions you want to reuse here.'")
-    create_file(os.path.join(tests_dir, "testdata", "__init__.py"), "'Put reuseable functions for generating and handling test data here.'")
-    create_file(os.path.join(tests_dir, "tests", "__init__.py"), "'Put your high level tests here.'")
+    create_tests_folders(tests_dir)
 
     create_file(os.path.join(project_dir,"requirements.txt"), """
 # Requirements.txt file
