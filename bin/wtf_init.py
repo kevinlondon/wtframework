@@ -101,7 +101,7 @@ if __name__ == '__main__':
     create_file(os.path.join(tests_dir, "flows", "__init__.py"), "'Put reusable multi-page flows here.'")
     create_file(os.path.join(tests_dir, "models", "__init__.py"), "'Put models like database abstractions here.'")
     create_file(os.path.join(tests_dir, "pages", "__init__.py"), "'Put your PageObjects here.'")
-    create_file(os.path.join(tests_dir, "support", "__init__.py"), "Put various utility functions you want to reuse here.'")
+    create_file(os.path.join(tests_dir, "support", "__init__.py"), "'Put various utility functions you want to reuse here.'")
     create_file(os.path.join(tests_dir, "testdata", "__init__.py"), "'Put reuseable functions for generating and handling test data here.'")
     create_file(os.path.join(tests_dir, "tests", "__init__.py"), "'Put your high level tests here.'")
 
