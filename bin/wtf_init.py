@@ -81,42 +81,29 @@ if __name__ == '__main__':
     create_file(runtests_path, _runtests_py_.contents)
     # make file executable
     os.chmod(runtests_path, 0755)
-    
-    #create asset folder
-    ensure_dir(os.path.join(project_dir, "assets"))
 
-    #create asset folder
-    ensure_dir(os.path.join(project_dir,"data"))
+    # Create project folders as needed
+    project_subdirectories = ["assets", "data", "configs", "reference-screenshots", "reports", "screenshots", "tests"]
+    for subdirectory in project_subdirectories:
+        ensure_dir(os.path.join(project_dir, subdirectory))
     
-    #create configs
-    ensure_dir(os.path.join(project_dir,"configs"))
     #create default config file
     create_file(os.path.join(project_dir,"configs", "default.yaml"), _default_yaml_.contents)
     
-    #create reference screenshots dir.
-    ensure_dir(os.path.join(project_dir, "reference-screenshots"))
-    
-    #create reports dir
-    ensure_dir(os.path.join(project_dir,"reports"))
-    
-    #create screenshots dir
-    ensure_dir(os.path.join(project_dir,"screenshots"))
-    
-    #create tests dir
-    ensure_dir(os.path.join(project_dir,"tests"))
-    create_file(os.path.join(project_dir,"tests", "__init__.py"), "'Top level tests folder.  Organize your items in the subfolders below.'")
-    ensure_dir(os.path.join(project_dir,"tests", "flows"))
-    create_file(os.path.join(project_dir,"tests", "flows", "__init__.py"), "'Put reusable multi-page flows here.'")
-    ensure_dir(os.path.join(project_dir,"tests", "models"))
-    create_file(os.path.join(project_dir,"tests", "models", "__init__.py"), "'Put models like database abstractions here.'")
-    ensure_dir(os.path.join(project_dir,"tests", "pages"))
-    create_file(os.path.join(project_dir,"tests", "pages", "__init__.py"), "'Put your PageObjects here.'")
-    ensure_dir(os.path.join(project_dir,"tests", "support"))
-    create_file(os.path.join(project_dir,"tests", "support", "__init__.py"), "Put various utility functions you want to reuse here.'")
-    ensure_dir(os.path.join(project_dir,"tests", "testdata"))
-    create_file(os.path.join(project_dir,"tests", "testdata", "__init__.py"), "'Put reuseable functions for generating and handling test data here.'")
-    ensure_dir(os.path.join(project_dir,"tests", "tests"))
-    create_file(os.path.join(project_dir,"tests", "tests", "__init__.py"), "'Put your high level tests here.'")
+    tests_dir = os.path.join(project_dir, "tests")
+
+    # Create test folders as needed
+    tests_subdirectories = ["flows", "models", "pages", "support", "testdata", "tests"]
+    for subdirectory in tests_subdirectories:
+        ensure_dir(os.path.join(tests_dir, subdirectory))
+
+    create_file(os.path.join(tests_dir, "__init__.py"), "'Top level tests folder.  Organize your items in the subfolders below.'")
+    create_file(os.path.join(tests_dir, "flows", "__init__.py"), "'Put reusable multi-page flows here.'")
+    create_file(os.path.join(tests_dir, "models", "__init__.py"), "'Put models like database abstractions here.'")
+    create_file(os.path.join(tests_dir, "pages", "__init__.py"), "'Put your PageObjects here.'")
+    create_file(os.path.join(tests_dir, "support", "__init__.py"), "Put various utility functions you want to reuse here.'")
+    create_file(os.path.join(tests_dir, "testdata", "__init__.py"), "'Put reuseable functions for generating and handling test data here.'")
+    create_file(os.path.join(tests_dir, "tests", "__init__.py"), "'Put your high level tests here.'")
 
     create_file(os.path.join(project_dir,"requirements.txt"), """
 # Requirements.txt file
