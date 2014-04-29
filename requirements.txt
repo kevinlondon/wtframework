@@ -28,7 +28,7 @@ unittest2>=0.5.1
 interruptingcow>=0.6
 
 # Nose is used as top level test driver and reporting.
-nose2>=0.4.6
+nose>=1.3.1
 
 # DDT module for Data driven decorators. (we extend these for our ddt decorators)
 ddt>=0.2.0
