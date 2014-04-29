@@ -137,4 +137,4 @@ wtframework=={version}
         print("Generating example files.")
 
         for key in _examples_.examples.keys():
-            create_file( os.path.join(project_dir,key), _examples_.examples[key], overwrite=True)
+            create_file(os.path.join(project_dir, key), _examples_.examples[key], overwrite=True)
